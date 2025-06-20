@@ -1,0 +1,20 @@
+class SearchSuggestionSystem {
+  constructor(products) {
+    
+    this.products = products.sort();
+  }
+
+  getSuggestions(searchWord) {
+    let result = [];
+    let prefix = "";
+
+    for (let i = 0; i < searchWord.length; i++) {
+      prefix += searchWord[i];
+      
+      const matches = this.products.filter(product => product.startsWith(prefix));
+      result.push(matches.slice(0, 3));
+    }
+
+    return result;
+  }
+}
